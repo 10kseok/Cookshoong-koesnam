@@ -1,17 +1,19 @@
 # 쿡슝(Cook-Shoong)
 ![](https://velog.velcdn.com/images/eora21/post/9b2cc6a2-84df-4ff6-9c1c-338c53c7f22e/image.png)
 
+## 개요 
+MSA 구조를 학습하고 배운 기술을 적용해보기 위한 온라인 음식 배달 플랫폼 제작 프로젝트 
+
 ## 팀원
 백엔드 5명으로 구성된 프로젝트
 
 ## ERD
 https://www.erdcloud.com/d/5D89pNAP23LAuexGz
 
-### DB관리자
-- 유승연
+### DB 관리
 
-ERD 작성은 ERDCloud를 사용하였으며, 생성 및 수정은 My Workbench를 이용하였습니다. 해당 DB의 DDL파일은 이곳을 참조해 주세요. -> https://github.com/nhnacademy-be3-CookShoong/ddl_manage
-
+ERD 작성은 ERDCloud를 사용하였으며, 생성 및 수정은 My Workbench를 이용하였습니다.   
+해당 DB의 DDL파일은 이곳을 참조해 주세요. -> https://github.com/nhnacademy-be3-CookShoong/ddl_manage
 Cook-Shoong ERD 0.2.8 version까지 업데이트되었습니다.
 
 
@@ -93,26 +95,14 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 - WBS 일정을 바탕으로 각자 일정에 맞추어 세분화 작업을 진행하였습니다. 추가로 각자 진행하는 부분에 있어서 사전 지식 및 진행 사항 등을 일정 안에 작성함으로써 프로젝트 효율을 높였습니다.
 - 추만석
 ![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/0d99356e-f8bb-4a7f-9523-e2b68b835188)
-- 윤동현
-![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/cf01017f-fc7b-4016-a6c7-91aa6a831a8b)
-- 김주호
-![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/8bda05b3-7fea-4b35-8a84-9fa744163686)
-- 정제완
-![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/1adbf6eb-e8fb-46d6-b59b-4793476591c6)
-- 유승연
-![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/eb275314-3e9a-4be6-a14b-505250105167)
 
 ## 칸반보드
 - Git에서 제공하는 칸반보드를 활용해서 해야 할 일, 진행 중, 지연, 완료 단계로 프로젝트 효율을 높였습니다.
 ![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/5907ea4e-721a-4db0-9a8d-9188a297c35b)
 
-## 테스트 커버리지
-- Shop 서버의 주요 기능들에 대한 테스트 커버리지입니다.
-![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/93ebfd8b-76f6-418d-b5f6-f0d03145acdd)
-
 ## REST API Specification
 - SwaggerUI + Spring REST Docs 함께 사용하였습니다.
-- [REST API](https://www.cookshoong.store/swagger-ui)
+- [REST API](https://www.cookshoong.store/swagger-ui) (현재 서버 종료됨)
 ![image](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/d2659fac-288c-45f6-ba75-018ca5cfe9b6)
 
 ## [QA](https://github.com/orgs/nhnacademy-be3-CookShoong/projects/1/views/18?pane=issue&itemId=35665501)
@@ -161,283 +151,9 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 ### 사용된 기술
 - Spring Security, Spring Cloud Gateway, JWT
 
-### 담당자
-- 유승연
-
-### 기능
-- 회원의 마지막 로그인 기록이 90일 이전일 경우 스프링배치와 스케줄러를 이용하여 회원을 휴면상태로 변경함.
-- 스프링배치를 이용하여 매월 5일 회원의 이전 달에 주문완료(COMPLETE)된 주문들의 횟수를 기준으로 회원의 등급을 재산정함.
-- 재산정한 등급을 기준으로 매월 5일 각 등급에 따라 쿠폰을 발급.
-
-### 사용된 기술 및 API
-스프링배치, Mybatis, Quartz 스케줄러
-
 ---
-
-
-## 주소
-> 사용자가 해당 주소를 사용함으로써 편리하게 배달을 받을 수 있고, 매장 또한 주소를 등록해 놓음으로써 사용자가 쉽게 위치를 알 수 있다.
-
-### 담당자
-- 정제완
-
-### 설명
-- 회원
-   - kakao map을 활용하여 회원가입 시 등록할 수 있도록 구현했습니다.
-   - 마이페이지에서 주소 페이지에서 주소를 추가 등록하고 지도를 불러와 시각화 및 현재 위치 버튼을 통해 현재 위치를 불러오는 기능을 구현했습니다.
-   - 회원에 대한 주소는 최대 10개까지 등록이 가능하도록 설정되어 있습니다.
-   - 또한 회원이 선택한 주소가 메인 주소가 되어 매장이 보이게 됩니다.
-   - 매장은 사용자에 주소로부터 3km 이내 위치한 매장을 불러옵니다.
-- 사장님
-   - 사장님 매장 등록 시 kakao map 활용할 수 있도록 구현했습니다.
-
-### 사용된 기술 및 API
-- kakao map API, JPA, Thymeleaf, javascript, Mysql
-
----
-
-
-
-## 매장
-> 사업자는 매장을 쉽게 등록하고 영업을 관리할 수 있고, 사용자는 본인이 주문할 수 있는 매장에 대한 가게 정보를 볼 수 있습니다.
-
-### 담당자
-- 유승연
-
-### 기능
-- 사업자 : 매장 조회, 등록 및 수정, 매장의 상태 변경, 본인 매장 리스트 관리, 영업시간과 휴무 시간 기준으로 영업 상태 변경 처리.
-- 관리자 : 매장 등록에 필요한 은행, 카테고리, 가맹점 등을 등록, 조회, 수정, 삭제하여 관리
-- 사용자 : 각 매장 조회
-
-### 사용된 기술 및 API
-- Spring JPA, Object Storage, Mysql, Thymeleaf, Javascript, toast ui editor 사용
-
-### 설명
-- 매장 사진, 사업자 등록증과 같은 대용량 파일에 대한 저장을 ObjectStorage 또는 Local에 등록하여 관리할 수 있도록 구현.
-- 개발자가 ObjectStorage 외에 또 다른 저장소가 붙었을 경우를 대비하여 proxy패턴을 이용하여 구현.
-- 사용자가 메인 페이지에 접근했을 때 혹은 엘라스틱서치가 매장에 대한 정보를 보여줄 때 매장의 영업 정보 및 휴무일을 기준으로 자동으로 영업상태를 변경할 수 있도록 구현.
-- (영업상태는 총 4가지로, 사업자가 지정한 영업시간을 기준으로 자동으로 OPEN, BREAKTIME을 가질 수 있고, 영업 중 강제로 영업을 멈추기 위한 CLOSE상태를 추가하였습니다. 해당 상태에서 자동으로 넘어가면 안 되기 때문에 CLOSE 상태일 경우 자동 업데이트를 하지 않도록 하였습니다. 또한 영업을 영구 중단한 매장의 경우 사용자들에게 보이지 않더라도 사업자에게 중요 정보가 있을 수 있기 때문에 매장을 삭제하지 않고 단순 조회만 가능하도록 구현하였습니다.)
-- 매장 및 서비스의 주요 코드들을 관리할 수 있는 관리자 페이지 구현.
-- toast ui editor을 이용하여 사장님들이 다양하고 예쁘게 매장 설명할 수 있도록 구현.
-- 매장 등록, 수정, 조회, 상태 변경 등 구현
-
----
-
-
-
-## 검색
-> 사용자가 매장에 대한 검색을 키워드를 통해 할 수 있습니다. 사업자는 매장을 검색하기 위한 동의어, 예약어를 관리할 수 있습니다.
-
-### 담당자
-- 윤동현
-
-### 기능
-- Elasticsearch을 이용한 매장 검색
-- 사용자와 매장의 위치정보를 이용하여, 배달 가능 거리 (3 km 이내) 매장만을 조회
-- 매장 이름, 메뉴 이름, 매장 카테고리, 지역 이름 등을 키워드로 통합하여 동적 쿼리를 생성
-- Elasticsearch, Logstash, kibana 를 사용하여 데이터베이스에 있는 데이터를 통합하여 Elasticsearch 데이터를 구성
-- 동의어, 예약어 사전에 대한 적용 (데이터베이스에 동의어, 예약어 테이블을 구성하여 배포 시 해당 데이터를 사전 데이터로 변환하여 적용)
-
-### 사용기술
-- Elasticsearch, Logstash, Kibana, MySQL, Spring Data Elasticsearch 사용.
-
-### 설명
-- Elasticsearch, Logstash, Kibana 를 Docker 환경으로 구성하여 서버의 구성과 배포를 자동화
-- Logstash를 통해 MySQL 과의 Pipeline을 구성
-- Pipeline을 통해 데이터를 받아올 때, Elasticsearch Template을 적용하여 데이터를 구성
-- 데이터베이스 상에서 변경된 값을 Elasticsearch Data에 반영하는 로직과 동의어, 예약어를 반영하는 로직을 이원화
-- 검색 결과에 대해 다양한 순서를 적용하여 별점 순, 거리 순, 이벤트 여부 등에 따라 다른 검색 결과를 도출
-- Elasticsearch 검색 서비스를 무중단으로 제공하기 위해 3개의 노드를 클러스터로 묶어서 서버를 구성
-- Nori Tokenizer를 사용하여 한글 형태소 분석 검색을 구현
-- fuzzeness filter를 적용하여 오타에 대한 검색을 구현
-
----
-
-
-## 메뉴
-> 사용자가 매장의 메뉴를 간편하게 찾을 수 있습니다. 사업자는 매장에 메뉴를 간편하게 추가할 수 있습니다. 메뉴와 옵션과의 관계를 명확하게 구성하고 조회할 수 있습니다.
-
-### 담당자
-- 윤동현
-
-### 기능
-- 사업자 : 메뉴 그룹, 메뉴, 옵션 그룹, 옵션에 대한 조회, 등록, 수정 및 삭제. 본인 매장의 메뉴, 옵션 리스트 관리. 메뉴와 옵션 간의 관계 처리.
-- 사용자 : 매장의 메뉴 및 옵션 조회.
-
-### 사용된 기술 및 API
-- Spring JPA, Thymeleaf, javascript, toast ui editor 사용.
-
-### 설명
-- 메뉴, 옵션의 그룹화를 통해 주문 시 원하는 메뉴에 대한 접근을 간소화
-- 사업자가 각 메뉴에 대한 그룹 및 옵션을 설정할 수 있게 구현. 수정 시 메뉴에 대한 기존 정보를 불러와 수정할 수 있도록 JavaScript 파일을 구성
-- 고객이 다양한 메뉴를 간편하게 고를 수 있도록 구현. 각 메뉴의 그룹에 따라 탭 방식으로 페이지에 배치
-- 메뉴의 이름, 메뉴의 설명 등을 검색 조건에 포함하여 고객이 해당 메뉴의 이름을 통해 매장을 검색할 수 있도록 구현
-
----
-
-
-
-## 장바구니
-> 사용자가 주문하고자 하는 메뉴를 담아 편리하게 주문을 할 수 있다. 단, 한 매장에 대해서만 장바구니를 담을 수 있도록 되어 있습니다.
-
-### 담당자
-- 정제완
-
-### 사용된 기술 및 API
-- Redis, 분산락, JPA, Thymeleaf, javascript, Mysql
-
-### 설명
-- 장바구니는 회원이 많은 조회와 추가 및 수정이 발생하는 부분이라 Redis를 활용하여 바로바로 처리할 수 있도록 구현했습니다.
-- 장바구니 key와 Phantom key를 두어서 장바구니 key 가 만료되어 사라지기 전에 Phantom key를 먼저 만료시켜서 Listener를 통해 캐치한 뒤 따로 키만 분리해서 Redis 장바구니 내역을 DB에 장바구니를 영구저장 하도록 구현했습니다.
-   - 이렇게 사용함으로써 Redis 에 단점인 메모리 부하를 줄이고 사용자 또한 이전에 담아뒀던 장바구니 내역을 확인할 수 있습니다.
-- 장바구니에 메뉴를 담아두지 않은 상태라면 빈 장바구니를 생성해서 조회 시에 빈 장바구니가 존재하면 redis 에 들어 있는 빈 key 만 인식하게 함으로써 DB 접근을 최소화하도록 구현하였습니다.
-   - 만약 Redis 에 장바구니 내역이나 빈 장바구니가 존재하지 않을 시에만 DB에 접근하여 장바구니 내역을 불러와 Redis 에 다시 저장시킴으로써 DB 접근을 최소화하였습니다.
-- Back API는 두 개 인스턴스로 동작하기 때문에 동시성 이슈가 발생하므로, 분산락을 활용해 먼저 들어온 장바구니를 DB에 저장하고 다음번에 들어오는 장바구니는 들어오기 전에 제약을 줘서 들어오지 못하도록 구현했습니다.
-
----
-
-
-
-
-## 주문
-> 사용자가 음식을 주문할 수 있습니다.
-
-### 담당자
-- 김주호
-
-### 기능
-- 장바구니에 담은 음식들을 주문합니다.
-- 장바구니에 음식을 담지 않았을 경우, 주문 화면으로 넘어갈 수 없습니다.
-- 최소 주문 금액을 충족하지 못 했을 시, 주문 화면으로 넘어갈 수 없습니다.
-- 최대 주문 거리를 넘었을 시, 주문 화면으로 넘어갈 수 없습니다.
-- 쿠폰, 포인트를 적용하여 총금액을 할인받을 수 있습니다.
-- 주문을 받은 사장님은 주문 관리 페이지에서 해당 주문을 수락하고 배달 요청을 하거나, 혹은 취소할 수 있습니다.
-- 주문 기록은 마이페이지에서 확인할 수 있습니다.
-
-### 설명
-- 주문이 생성 가능한지, 적용된 쿠폰과 포인트가 사용 가능한 지 검증합니다.
-- 실제 쿠폰과 포인트는 결제되며 소비됩니다.
-
-### 사용된 기술 및 API
-- JPA, QueryDSL, Thymeleaf, JS
-
----
-
-
-
-
-## 결제 및 환불
-> 사용자가 주문한 내역들을 토스 API을 통해 간편하게 결제할 수 있다.
-
-### 담당자
-- 정제완
-
-### 기능
-- 토스 API 사용
-- 토스 결제 및 취소 완료 후 데이터 저장
-
-### 설명
-- 토스 API를 활용한 결제 승인 및 취소 처리
-- 토스 API를 결제 취소를 활용해 사장님 전액 및 부분환불 처리 구현
-
----
-
-
-
-## 쿠폰
-> 사용자가 음식을 주문할 때, 주문 금액에 대해 고정 금액 또는 퍼센트만큼 할인받아 구입할 수 있게 합니다.
-
-### 담당자
-- 김주호
-
-### 기능
-- 음식 주문 전, 매장 페이지 혹은 이벤트 페이지에서 쿠폰을 발급받습니다.
-- 음식 주문 시, 쿠폰을 선택해 적용합니다.
-- 쿠폰은 각각의 최소 주문 금액이 있습니다. 해당 조건을 충족하지 못 하면 주문에 적용할 수 없습니다.
-- 퍼센트 쿠폰은 최대 할인 금액이 있습니다. 아무리 높은 가격이더라도 최대 할인 금액까지만 적용됩니다.
-- 발급받은 쿠폰은 만료날 전까지 다시 발급받을 수 없습니다.
-
-### 설명
-- 많은 사람들이 쿠폰을 발급받는 상황을 가정, RabbitMQ를 사용하여 BE 서버의 부하를 줄였습니다.
-- 같은 쿠폰을 발급받지 못 하게끔, 이벤트 발급일 경우 Redis에 쿠폰들의 코드를 Bulk Insert 하였습니다. 따라서 트랜잭션 레벨을 올리지 않고도 MQ Consumer가 빠른 속도로 쿠폰을 발급시켜 줄 수 있습니다.
-- 만약 Redis의 정합성에 문제가 생겨 쿠폰 코드를 가져올 수 없을 경우, MQ Consumer가 DB에 접근해 Redis의 정합성을 다시 맞춰줄 수 있게끔 하였습니다.
-- MQ Consumer가 DB에 접근하는 동안 다른 요청들을 막기 위하여 분산 락을 적용하였습니다.
-- MQ Consumer가 DB에 접근하고 난 후, 밀린 요청으로 인한 미유효 쿠폰 발급 상황을 막기 위해 낙관적 락을 적용하였습니다.
-
-### 사용된 기술 및 API
-- JPA, QueryDSL, Redisson, RabbitMQ, Redis, Spring Event, Thymeleaf, JS
-
----
-
-
-
-## 포인트
-> 사용자가 음식을 주문할 때, 총금액에 대해 사용하는 포인트만큼 할인받아 구입할 수 있게 합니다.
-
-### 담당자
-- 김주호
-
-### 기능
-- 회원 가입, 리뷰 작성, 주문 완료 시 사용자의 포인트가 상승합니다.
-- 획득한 포인트는 주문 시 현금처럼 사용할 수 있습니다.
-- 사용 및 발급 포인트는 마이페이지에서 확인할 수 있습니다.
-
-### 설명
-- 회원 가입, 리뷰 작성, 주문 완료 시 포인트를 제공하기 위해 Spring Event를 구현하였습니다.
--
-### 사용된 기술 및 API
-- JPA, QueryDSL, Spring Event, Thymeleaf, JS
-
----
-
-
-
-## 리뷰
-> 사용자는 자신이 주문한 가게에 대해 리뷰를 작성할 수 있으며, 사업자는 사용자들의 리뷰에 직접 리뷰를 달 수 있습니다. 또한 리뷰를 통해 사용자들의 메뉴 및 매장 선택에 도움을 줄 수 있습니다.
-
-### 담당자
-- 유승연, 정제완, 윤동현
-
-### 기능
-- 주문완료된 건에 대해 사용자가 리뷰를 등록할 수 있고, 리뷰 등록 시 여러 장의 사진을 등록할 수 있음.
-- 일반회원 :  등록한 리뷰를 조회 및 수정할 수 있음. (일반회원은 해당 리뷰를 삭제하지 못하도록 구현)
-- 사업자회원 : 본인의 매장에 달린 리뷰를 확인할 수 있고, 해당 리뷰에 여러 개의 답글을 달 수 있음. (사업자는 등록, 수정, 삭제, 조회가 모두 가능함.)
-- 매장 : 해당 매장에 등록된 전체 리뷰를 조회할 수 있음.
-
-### 사용된 기술
-JPA, Thymeleaf, javascript, Mysql, ObjectStorage, toast Ui editor 사용
-
----
-
-
-
-## 페이지 레이아웃
-> 사용자과 사업자는 웹페이지 및 모바일 화면에서 화면 크기에 맞게 재정렬된 콘텐츠를 볼 수 있습니다.
-
-### 담당자
-- 윤동현
-
-### 기능
-- 각 페이지에서 공통적으로 사용되는 CSS, JavaScript 등에 대한 레이아웃 통합
-- 모바일 화면, PC 웹 화면의 너비와 높이에 맞게 페이지의 콘텐츠를 재정렬
-
-### 사용된 기술
-- Thymeleaf, Boot Strap, CSS, JavaScript
-
-### 설명
-- Thymeleaf Layout 을 적용하여 각 페이지에서 반복되는 CSS, JavaScript 주입 부분을 제거
-- Boot Strap을 적용하여 html의 class 사용으로 페이지 간의 일관적인 디자인 구현
-- 모바일 화면, PC 웹 화면의 너비와 높이에 맞게 페이지 콘텐츠의 너비를 줄이거나 배치를 재정렬
-- 텍스트 콘텐츠의 너비가 부족한 경우에 텍스트를 아이콘으로 변경하여 사용
-
----
-
-
 
 ## 인프라
-### 담당자
-- 정제완, 윤동현, 김주호, 유승연, 추만석
-
 ### 사용된 기술
 - Github Action, Jenkins, Nginx, Road Balancer, Docker, NHN Cloud Instance
 
@@ -449,7 +165,6 @@ JPA, Thymeleaf, javascript, Mysql, ObjectStorage, toast Ui editor 사용
 - 무중단 배포
    - Front Server : 클라이언트의 요청을 Nginx 통해서 들어오고, 로드밸런서에서 Round Robin 방식으로 순서대로 Front Application에 보내지게 됩니다.
    - Back, Betch, Gateway, Delivery : Service Discovery 인 Eureka 에서 필요한 서비스가 어느 곳에 있는지에 대한 정보를 API Gateway로 반환하고 API Gateway는 이에 따라 해당 API 서비스를 호출하고 결과를 받게 됩니다.
-
 ---
 
 
@@ -458,8 +173,6 @@ JPA, Thymeleaf, javascript, Mysql, ObjectStorage, toast Ui editor 사용
 ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=springboot&logoColor=white)
 ![Spring Security](https://img.shields.io/badge/SpringSecurity-6DB33F?style=flat&logo=springsecurity&logoColor=white)
-![Spring Session](https://img.shields.io/badge/SpringSession-6DB33F?style=flat&logo=spring&logoColor=white)
-![Spring Batch](https://img.shields.io/badge/SpringBatch-6DB33F?style=flat&logo=spring&logoColor=white)
 ![Spring Cloud](https://img.shields.io/badge/SpringCloud-6DB33F?style=flat&logo=spring&logoColor=white)
 
 - DB <br>
@@ -474,24 +187,13 @@ JPA, Thymeleaf, javascript, Mysql, ObjectStorage, toast Ui editor 사용
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white)
 
-- Search <br>
-![Elastic](https://img.shields.io/badge/Elastic-005571?style=flat&logo=Elastic&logoColor=white)
-![Elastic Stack](https://img.shields.io/badge/ElasticStack-005571?style=flat&logo=elasticstack&logoColor=white)
-![Elastic Search](https://img.shields.io/badge/ElasticStack-005571?style=flat&logo=elasticsearch&logoColor=white)
-
 - 그 외 기술 <br>
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white)
 ![JAVA](https://img.shields.io/badge/JAVA-007396?style=flat&logo=OpenJDK&logoColor=white)
-![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=flat&logo=Hibernate&logoColor=white)
 ![JPA](https://img.shields.io/badge/JPA-59666C?style=flat&logo=Hibernate&logoColor=white)
-![QueryDsl](https://img.shields.io/badge/QueryDsl-59666C?style=flat&logo=Hibernate&logoColor=white) <br>
 ![SonarLint](https://img.shields.io/badge/SonarLint-CB2029?style=flat&logo=SonarLint&logoColor=white)
 ![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=SonarQube&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white)
-![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat&logo=RabbitMQ&logoColor=white)
 ![ApacheMaven](https://img.shields.io/badge/ApacheMaven-C71A36?style=flat&logo=ApacheMaven&logoColor=white)
-![Kakao Maps](https://img.shields.io/badge/KakaoMaps-FFCD00?style=flat&logo=Kakao&logoColor=white)
-![Toss Payments](https://img.shields.io/badge/TossPayments-0085CA?style=flat&logo=contactlesspayment&logoColor=white)
