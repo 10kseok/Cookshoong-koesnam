@@ -8,23 +8,31 @@ MSA 구조를 학습하고 배운 기술을 적용해보기 위한 온라인 음
 백엔드 5명으로 구성된 프로젝트
 
 ## ERD
-https://www.erdcloud.com/d/5D89pNAP23LAuexGz
+[https://www.erdcloud.com/d/5D89pNAP23LAuexGz](https://www.erdcloud.com/d/xBD2t2L46DdMeBfeg)
 
 ### DB 관리
 
 ERD 작성은 ERDCloud를 사용하였으며, 생성 및 수정은 My Workbench를 이용하였습니다.   
-해당 DB의 DDL파일은 이곳을 참조해 주세요. -> https://github.com/nhnacademy-be3-CookShoong/ddl_manage
-Cook-Shoong ERD 0.2.8 version까지 업데이트되었습니다.
+해당 DB의 DDL파일은 이곳을 참조해 주세요. -> https://github.com/nhnacademy-be3-CookShoong/ddl_manage  
+(Cook-Shoong ERD 1.0.2 version까지 업데이트되었습니다)
 
 
 ![스크린샷 2023-08-19 오후 8 36 20](https://github.com/nhnacademy-be3-CookShoong/.github/assets/66362713/1d51e50a-18aa-4920-b179-75a030591ff6)
 
 
 ## 아키텍처
-- 클라이언트의 요청은 NginX 통해서 들어오고, 로드밸런스에서 Round Robin 방식으로 순서대로 Front Application에 보내지게 됩니다.
-- Front Application 은 필요한 요청을 API Gateway를 통해 처리하고, Gateway는 해당 요청에 대해 처리되어야 하는 서비스 API로 요청을 보내게 됩니다.
-- 이때 Service Discovery 인 Eureka 에서 필요한 서비스가 어느 곳에 있는지에 대한 정보를 API Gateway로 반환하고 API Gateway는 이에 따라 해당 API 서비스를 호출하고 결과를 받게 됩니다.
-- 해당 API 서비스는 Auth, Shop 이 있습니다. 이 외에, 검색 기능 향상을 위한 엘락스틱 서치 서버 대용량 일괄처리를 위한 배치 서버가 존재합니다.
+1. 사용자 요청 처리 (Front-End)
+- 모든 사용자 요청은 NGINX를 통해 안전하게 들어옵니다
+- 트래픽 분산을 위해 Round Robin 방식으로 여러 서버에 균등하게 부하를 분배합니다
+
+2. 서비스 연동 (Back-End)
+- API Gateway가 모든 서비스 요청을 중앙에서 관리합니다
+- Netflix Eureka를 통해 필요한 서비스의 위치를 자동으로 찾아줍니다
+- 주요 서비스:
+  * 인증(Auth) 서버: 사용자 인증/인가 담당
+  * 상점(Shop) 서버: 상품 정보 및 주문 관리
+  * 검색 서버: Elasticsearch로 빠른 검색 기능 제공
+  * 배치 서버: 대량 데이터 처리
 
 ![CookShoong_아키텍처](https://github.com/nhnacademy-be3-CookShoong/.github/assets/85005950/e644a030-23cf-4e91-9319-7e45d905893a)
 
@@ -122,10 +130,11 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 - 인증서버에서 자격증명을 확인하고 JWT을 발급합니다.
 - 액세스토큰과 리프레쉬 토큰은 JWT로 발급되며 사용자는 리프레쉬 토큰을 통해 토큰들을 자동으로 재발급합니다.
 - 게이트웨이에서 토큰을 검증하여 인증된 사용자만이 백엔드 API 호출을 가능하게 합니다.
-- 프론트서버에서는 발급받은 토큰을 이용한 백엔드 API 호출을 합니다.
-- 만료된 토큰 또는 탈취된 토큰의 접근을 막고 관리합니다. (블랙리스트 관리)
+- 프론트서버에서는 발급받은 토큰을 이용해 백엔드 API 호출을 합니다.
+- 블랙리스트를 두어 만료된 토큰 또는 탈취된 토큰의 접근을 막고 관리합니다.
 - 리프레쉬 토큰은 암호화되어 관리됩니다.
-
+- 게이트웨이에서 권한별로 적절한 API를 호출하는 지 확인합니다.
+  
 ### 사용된 기술
 - Spring Security, Spring Cloud Gateway, JWT
 
@@ -159,12 +168,12 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 
 ### 설명
 - CI/CD
-   - Github Action : front, back, betch, gateway
+   - Github Action : front, back, batch, gateway
    - Jenkins : auth, delivery
    - Github Action, Jenkins를 통해 CI를 진행하고 검증을 마친 코드들은 Docker 이미지로 생성되며 자동으로 NHN Cloud Instance에 Docker Container 가 생성되어 배포가 이뤄집니다.
 - 무중단 배포
    - Front Server : 클라이언트의 요청을 Nginx 통해서 들어오고, 로드밸런서에서 Round Robin 방식으로 순서대로 Front Application에 보내지게 됩니다.
-   - Back, Betch, Gateway, Delivery : Service Discovery 인 Eureka 에서 필요한 서비스가 어느 곳에 있는지에 대한 정보를 API Gateway로 반환하고 API Gateway는 이에 따라 해당 API 서비스를 호출하고 결과를 받게 됩니다.
+   - Back, Batch, Gateway, Delivery : Service Discovery 인 Eureka 에서 필요한 서비스가 어느 곳에 있는지에 대한 정보를 API Gateway로 반환하고 API Gateway는 이에 따라 해당 API 서비스를 호출하고 결과를 받게 됩니다.
 ---
 
 
