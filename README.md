@@ -139,8 +139,6 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 - Spring Security, Spring Cloud Gateway, JWT
 
 
----
-
 
 ## 회원
 > 사용자가 Cookshoong 서비스에 간편하게 가입할 수 있도록 돕습니다.
@@ -160,7 +158,6 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 ### 사용된 기술
 - Spring Security, Spring Cloud Gateway, JWT
 
----
 
 ## 인프라
 ### 사용된 기술
@@ -174,7 +171,7 @@ PR에 대해 코드리뷰를 진행하였으며, 오프라인으로 진행했더
 - 무중단 배포
    - Front Server : 클라이언트의 요청을 Nginx 통해서 들어오고, 로드밸런서에서 Round Robin 방식으로 순서대로 Front Application에 보내지게 됩니다.
    - Back, Batch, Gateway, Delivery : Service Discovery 인 Eureka 에서 필요한 서비스가 어느 곳에 있는지에 대한 정보를 API Gateway로 반환하고 API Gateway는 이에 따라 해당 API 서비스를 호출하고 결과를 받게 됩니다.
----
+
 
 
 ## 기술
