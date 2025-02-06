@@ -7,6 +7,12 @@ MSA 구조를 학습하고 배운 기술을 적용해보기 위한 온라인 음
 ## 팀원
 백엔드 5명으로 구성된 프로젝트
 
+## 코드 저장소
+
+1. [인증 서버 레포지토리](https://github.com/nhnacademy-be3-CookShoong/cookshoong-auth)
+2. [게이트웨이 레포지토리](https://github.com/nhnacademy-be3-CookShoong/cookshoong-gateway)
+3. [프론트 서버(인증) 레포지토리](https://github.com/nhnacademy-be3-CookShoong/cookshoong-frontend/tree/develop/src/main/java/store/cookshoong/www/cookshoongfrontend/auth)
+
 ## ERD
 [https://www.erdcloud.com/d/5D89pNAP23LAuexGz](https://www.erdcloud.com/d/xBD2t2L46DdMeBfeg)
 
